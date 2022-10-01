@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1 align="center">Serice Application</h1>
+
+<table>
+    <tr>
+        <td>
+            <label for="minNum">Min : </label><input type="number" name="minNum" id="minNum">
+        </td>
+        <td></td>
+        <td>
+            <label for="maxNum">Max : </label><input type="number" name="maxNum" id="maxNum">
+        </td>
+        <td>
+            <button id="emptyTBox" onclick="btnClear();">Clear</button>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <button id="evenNum" onclick="showEvenNumber();">Even Number</button>
+        </td>
+        <td colspan="3">
+            <span id="evenOut"></span>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <button id="oddNum" onclick="showOddNumber();">Odd Number</button>
+        </td>
+        <td colspan="3">
+            <span id="oddOut"></span>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <button id="femNum" onclick="showFemNumber();">Fem Number</button>
+        </td>
+        <td colspan="3">
+            <span id="femOut"></span>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <button id="SquNum" onclick="showSquNumber();">Square Number</button>
+        </td>
+        <td colspan="3">
+            <span id="Squout"></span>
+        </td>
+    </tr> 
+</table>
+
+<script>
+    function showEvenNumber(){
+        var minNum = document.getElementById("minNum").value;
+        var maxNum = document.getElementById("maxNum").value;
+        var output = "";
+
+        if((minNum >= 0) && (maxNum <= 100)){
+            if(minNum != "" && maxNum != ""){
+                if(maxNum > minNum){
+                    var i = minNum;
+                    while(i<=maxNum){
+                        if(i % 2 == 0){
+                            output = output + i + " , "
+                        }
+                        i++;
+                    }
+                }
+                else{
+                    alert("Max should be grater than Min.");
+                }
+            }
+            else{
+                alert("You should give Min & Max for the calculation.");
+            }
+        }
+        else{
+            alert("You should give Min grater than or equal to 0 & Max less than or equal to 100 for the calculation.");
+        }
+        document.getElementById("evenOut").append(output);
+    }
+
+    function showOddNumber(){
+        var minNum = document.getElementById("minNum").value;
+        var maxNum = document.getElementById("maxNum").value;
+        var output = "";
+
+        if((minNum >= 0) && (maxNum <= 100)){
+            if(minNum != "" && maxNum != ""){
+                if(maxNum > minNum){
+                    var i = minNum;
+                    while(i<=maxNum){
+                        if(i % 2 == 1){
+                            output = output + i + " , "
+                        }
+                        i++;
+                    }
+                }
+                else{
+                    alert("Max should be grater than Min.");
+                }
+            }
+            else{
+                alert("You should give Min & Max for the calculation.");
+            }
+        }
+        else{
+            alert("You should give Min grater than or equal to 0 & Max less than or equal to 100 for the calculation.");
+        }
+        document.getElementById("oddOut").append(output);
+    }
+
+    function showFemNumber(){
+        var minNum = document.getElementById("minNum").value;
+        var maxNum = document.getElementById("maxNum").value;
+        var output = "";
+        var fp = 0;
+        var sp = 1;
+        var tp = fp + sp;
+
+        if((minNum >= 0) && (maxNum <= 100)){
+            if(minNum != "" && maxNum != ""){
+                if(maxNum > minNum){
+                    if(minNum <= fp){
+                        output += fp + " , "; //output = output + fp; in-case 0 start - 0 show
+                    }
+                    if(minNum <= sp){
+                        output += sp + " , "; //output = output + sp; in-case 1 start - 1 show
+                    }
+                    if(minNum <= tp){
+                        output += tp + " , "; //output = output + tp; in-case 1 start - 1 show
+                    }
+                    var i = 0;
+                    while(i <= 1){
+                        fp = sp;
+                        sp = tp;
+                        tp = fp + sp;
+                        if((tp>=minNum) && (tp<=maxNum)){
+                            output += tp + " , "; //output = output + tp
+                        }
+                        if(tp>=maxNum){
+                            break;
+                        }
+                    }
+                }
+                else{
+                    alert("Max should be grater than Min.");
+                }
+            }
+            else{
+                alert("You should give Min & Max for the calculation.");
+            }
+        }
+        else{
+            alert("You should give Min grater than or equal to 0 & Max less than or equal to 100 for the calculation.");
+        }
+        document.getElementById("femOut").append(output);
+    }
+
+    function showSquNumber(){
+        var minNum = document.getElementById("minNum").value;
+        var maxNum = document.getElementById("maxNum").value;
+        var output = "";
+        
+
+        if((minNum >= 0) && (maxNum <= 100)){
+            if(minNum != "" && maxNum != ""){
+                if(maxNum > minNum){
+                  
+                    
+                }
+                else{
+                    alert("Max should be grater than Min.");
+                }
+            }
+            else{
+                alert("You should give Min & Max for the calculation.");
+            }
+        }
+        else{
+            alert("You should give Min grater than or equal to 0 & Max less than or equal to 100 for the calculation.");
+        }
+        document.getElementById("SquOut").append(output);
+    }
+
+    function btnClear(){
+        document.getElementById("minNum").value = "";
+        document.getElementById("maxNum").value = "";
+    }
+</script>
+
+</body>
+</html>
